@@ -1,0 +1,49 @@
+1- Gave me a crash course about Playwright Python library. Gave me your output in a new .md file. use context7
+2- Refactor the @script.py file that was create by the "playwright codegen github.com" command, and add the username and password in .env file
+3- The playwright browser stuck on this page @image.png, and i found this error after running the @script.py file:
+Attempting to create repository: auto-repo-1769272848
+Traceback (most recent call last):
+File "/home/abdo/Code/Python/Automations/Github-Automation/script.py", line 79, in <module>
+    run(playwright)
+    ~~~^^^^^^^^^^^^
+File "/home/abdo/Code/Python/Automations/Github-Automation/script.py", line 58, in run
+    expect(page.locator(".octicon-check")).to_be_visible()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+File
+"/home/abdo/miniconda3/envs/playwright/lib/python3.14/site-packages/playwright/sync_api/_gene
+rated.py", line 20529, in to_be_visible
+self._sync(self._impl_obj.to_be_visible(visible=visible, timeout=timeout))
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File
+"/home/abdo/miniconda3/envs/playwright/lib/python3.14/site-packages/playwright/_impl/_sync_ba
+se.py", line 115, in _sync
+return task.result()
+            ~~~~~~~~~~~^^
+File
+"/home/abdo/miniconda3/envs/playwright/lib/python3.14/site-packages/playwright/_impl/_asserti
+ons.py", line 765, in to_be_visible
+await self._expect_impl(
+    ...<5 lines>...
+    )
+File
+"/home/abdo/miniconda3/envs/playwright/lib/python3.14/site-packages/playwright/_impl/_asserti
+ons.py", line 85, in _expect_impl
+raise AssertionError(
+        f"{out_message}\nActual value: {actual}{error_message}
+{format_call_log(result.get('log'))}"
+    )
+AssertionError: Locator expected to be visible
+Actual value: None
+Error: element(s) not found 
+Call log:
+- Expect "to_be_visible" with timeout 5000ms
+- waiting for locator(".octicon-check")
+
+4- The "Choose visibility *" @image\ copy.png is a drop down menue to specify if the created repo will be "Public" or "Private". I want you to edit the @script.py file to accept the repo visibility as an argument in the run() function.
+5-After creating the new Github repo, i opened the repo link and i found this page @image\ copy\ 2.png this page gave me a set of command that allow me to create a new local repo, then push this new local repo to the Github repo or push an existing local repo to the Github repo. I want you to write a shell script that automate this process by checking if the current working directory is an existing local repo or not, then run the appropriate command base on this check. Yoy can make this check by running the "git status" command.
+6-Use the subprocess libarary to run the @setup_repo.sh script after the run() function was finished
+  successfully @script.py file. Note you should pass the "repo_link" to the shell script to run
+  correctly.  
+7-Great, it works correctly now @setup_repo.sh i want to create the "README.md" file with my custom
+  "/" command in Gemini CLI, how to do that?
+
