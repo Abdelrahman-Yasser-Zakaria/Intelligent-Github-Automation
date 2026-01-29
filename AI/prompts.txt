@@ -46,4 +46,6 @@ Call log:
   correctly.  
 7-Great, it works correctly now @setup_repo.sh i want to create the "README.md" file with my custom
   "/" command in Gemini CLI, how to do that?
+8-I want to run the custom "/readme" command inside the @setup_repo.sh script to add more
+  intelligence to the script @cli_help
 
