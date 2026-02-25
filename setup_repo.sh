@@ -39,7 +39,7 @@ else
   # Generate README.md using Gemini CLI
   if [ ! -f "README.md" ]; then
     echo "Generating README.md with Gemini CLI..."
-    gemini "/readme" --yolo
+    gemini -p "/readme" --yolo
   fi
 
   echo "Adding files..."

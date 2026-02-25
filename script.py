@@ -1,6 +1,7 @@
 import re
 import os
 import subprocess
+import argparse
 from dotenv import load_dotenv
 from playwright.sync_api import Playwright, sync_playwright, expect
 
@@ -70,13 +71,20 @@ def run(playwright: Playwright, repo_name: str, visibility: str = "public") -> s
     return repo_link
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Create a GitHub repository using Playwright.")
+    parser.add_argument("repo_name", help="The name of the repository to create.")
+    parser.add_argument("--visibility", choices=["public", "private"], default="public", help="The visibility of the repository (default: public).")
+    args = parser.parse_args()
+
     with sync_playwright() as playwright:
-        repo_name = "Intelligent-Github-Automation"
-        visibility = "public"
-        repo_link = run(playwright, repo_name, visibility)
+        repo_link = run(playwright, args.repo_name, args.visibility)
         
         if repo_link:
             print("\nRunning setup_repo.sh...")
-            subprocess.run(["./setup_repo.sh", repo_link])
+            # Get the directory where script.py is located
+            script_dir = os.path.dirname(os.path.abspath(__file__))
+            setup_script_path = os.path.join(script_dir, "setup_repo.sh")
+            
+            subprocess.run([setup_script_path, repo_link])
 
 
